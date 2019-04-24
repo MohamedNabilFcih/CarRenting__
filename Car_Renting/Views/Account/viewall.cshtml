@@ -1,0 +1,88 @@
+﻿@model IEnumerable<WebApplication1.Models.ApplicationUser>
+
+@{
+    ViewBag.Title = "viewall";
+    Layout = "~/Views/shared/_mainlayout.cshtml";
+}
+
+
+
+<div class="container body-content">
+    <br /><br />
+    <ul class="nav nav-tabs">
+        <li class="active"><a href="~/Account/viewall"><span class="glyphicon glyphicon-align-justify" style="font-size:15px;"></span> Manage All Users </a></li>
+
+        <li ><a href="~/categories/Index"><span class="glyphicon glyphicon-plus"></span> Add Category</a></li>
+        <li><a href="~/Cars/Index"><span class="glyphicon glyphicon-plus"></span> Add Car </a></li>
+
+        <li><a href="~/indx/getAllUserRequest"><span class="glyphicon glyphicon-align-justify"></span> All Users Requests </a></li>
+        <li><a href="~/indx/avaliableCar"><span class="glyphicon glyphicon-ok"></span> available cars </a></li>
+        <li><a href="~/indx/Non_avaliableCar"><span class="glyphicon glyphicon-remove"></span> non available carss </a></li>
+        <li><a href="~/Roles/Index"><span class="glyphicon glyphicon-lock"></span> roles</a></li>
+        <li><a href="#"><span class="glyphicon glyphicon-search"></span> Search</a></li>
+    </ul> <br />
+    <table class="table table-bordered table-hover">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.UserName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.ssn)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PhoneNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Usertype)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.wallet)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsBlocked)
+            </th>
+
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.ssn)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PhoneNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Usertype)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.wallet) $
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IsBlocked)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "EdituserProfile", new { id = item.Id }, new { @class = "btn btn-warning btn-block" })
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "btn btn-danger  btn-block" })
+                    @Html.ActionLink("ChangeBlockState", "ChangeBlockState", new { id = item.Id }, new { @class = "btn btn-info  btn-block" })
+
+
+                </td>
+            </tr>
+        }
+
+    </table>
+    </div>

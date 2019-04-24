@@ -1,0 +1,92 @@
+﻿@model IEnumerable<Car_Renting.Models.RentCar>
+
+@{
+    ViewBag.Title = "getAllUserRequest";
+    Layout = "~/Views/shared/_mainlayout.cshtml";
+}
+<div class="container body-content "><br />
+
+    <ul class="nav nav-tabs">
+        <li><a href="~/Account/viewall"><span class="glyphicon glyphicon-align-justify"></span> Manage All Users </a></li>
+
+        <li><a href="~/categories/Index"><span class="glyphicon glyphicon-plus"></span> Add Category </a></li>
+        <li ><a href="~/Cars/Index"><span class="glyphicon glyphicon-plus"></span> Add Car </a></li>
+
+        <li class="active"><a href="~/indx/getAllUserRequest"><span class="glyphicon glyphicon-align-justify"  style="font-size:15px;"></span> All Users Requests </a></li>
+        <li><a href="~/indx/avaliableCar"><span class="glyphicon glyphicon-ok"></span> available cars </a></li>
+        <li><a href="~/indx/Non_avaliableCar"><span class="glyphicon glyphicon-remove"></span> non available carss </a></li>
+        <li><a href="#"><span class="glyphicon glyphicon-search"></span> Search</a></li>
+        <li><a href="#"><span class="glyphicon glyphicon-send"></span> FeedBack</a></li>
+    </ul> <br />
+
+    <div class="alert alert-info text-center"><strong> User Rent Requests </strong></div>
+
+
+    <table class="table table-bordered table-hover">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.car.cardesc)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.user.UserName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.user.ssn)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.date)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.location)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PickUp)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DropOff)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.car.avaliable)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.car.cardesc)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.user.UserName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.user.ssn)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.date)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.location)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PickUp)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DropOff)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.car.avaliable)
+                </td>
+                <td>
+                    @Html.ActionLink("Accept", "Accept", new { id = item.id })   &nbsp; -----
+                    @Html.ActionLink("Reject", "Reject", new { id = item.id })
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>

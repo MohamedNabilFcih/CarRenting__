@@ -1,0 +1,92 @@
+﻿@model Car_Renting.Models.RentCar
+
+@{
+    ViewBag.Title = "rent";
+    Layout = "~/Views/shared/_mainlayout.cshtml";
+}
+<div class="container body-content"><br /><br />
+    <div class="panel panel-primary">
+        <div class="panel-heading"><strong>rent details</strong>  </div>
+        <div class="panel-body">
+            <h2 class="text-center"><strong> Please Select Period Time </strong></h2>
+
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-horizontal">
+                    <h4></h4>
+                    @{
+                        if (ViewBag.Result != null)
+                        {
+                            <h3 style="color:#5cb85c;" class="text-center">@ViewBag.Result</h3>
+                        }
+                    }
+                    <hr />
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.PickUp, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.PickUp, new { htmlAttributes = new { @class = "datepicker" } })
+                            @Html.ValidationMessageFor(model => model.PickUp, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.DropOff, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.DropOff, new { htmlAttributes = new { @class = "datepicker " } })
+                            @Html.ValidationMessageFor(model => model.DropOff, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.location, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.location, new { htmlAttributes = new { @class = "form-control " } })
+                            @Html.ValidationMessageFor(model => model.location, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+
+
+
+
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            @Html.ActionLink("Back", "Index", new { }, new { @class = "btn btn-primary" })
+                            <input type="submit" value="Rent" class="btn btn-success" />
+                        </div>
+                    </div>
+
+                </div>
+
+
+                        }
+
+
+        </div>
+
+        </div>
+</div>
+<link href="~/Content/themes/base/jquery-ui.min.css" rel="stylesheet" />
+@section scripts
+    {
+        <script src="~/scripts/jquery-ui-1.12.1.min.js"></script>
+        <script>
+            $(function () {
+                $(".datepicker").datepicker({
+                    dateFormat: "dd-mm-yy",
+                    changeMonth: true,
+                    changeyear: true,
+                    yearRange: "2018:2020",
+                    showOn: "both",
+                    buttonText: "<i class='glyphicon glyphicon-calendar'></i>"
+
+
+                });
+               
+            });
+        </script>
+    }

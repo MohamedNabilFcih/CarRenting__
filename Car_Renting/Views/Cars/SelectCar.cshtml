@@ -1,0 +1,83 @@
+﻿@model Car_Renting.Models.Cars
+
+@{
+    ViewBag.Title = "SelectCar";
+    Layout = "~/Views/shared/_mainlayout.cshtml";
+}
+
+<h2>SelectCar</h2>
+
+@*@using (Html.BeginForm("select", "Cars", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>Cars</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.price, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.price, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.price, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.color, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.color, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.color, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.numchairs, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.numchairs, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.numchairs, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.model, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.model, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.model, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.avaliable, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.avaliable, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.avaliable, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="select" value="select" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>*@
+@using (Html.BeginForm("select", "Cars", FormMethod.Post))
+{
+    <input type="text" name="price" id="SearchName" placeholder="Search Now !" />
+    <input type="text" name="color" id="SearchName" placeholder="Search Now !" />
+    <input type="text" name="numchairs" id="SearchName" placeholder="Search Now !" />
+    <input type="text" name="model" id="SearchName" placeholder="Search Now !" />
+    <input type="text" name="avaliable" id="SearchName" placeholder="Search Now !" />
+}

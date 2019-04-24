@@ -1,0 +1,102 @@
+﻿@model Car_Renting.Models.Cars
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/shared/_mainlayout.cshtml";
+}
+<div class="container body-content"> <br /><br />
+
+    <div class="panel panel-primary">
+        <div class="panel-heading"><strong>details</strong>  </div>
+        <div class="panel-body">
+            <div>
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.category.categoryname)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.category.categoryname)
+                    </dd>
+                    <br />
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.cardesc)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.cardesc)
+                    </dd>
+                    <br />
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.price)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.price)
+                    </dd>
+                    <br />
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.color)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.color)
+                    </dd>
+                    <br />
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.numchairs)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.numchairs)
+                    </dd>
+                    <br />
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.model)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.model)
+                    </dd>
+                    <br />
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.avaliable)
+                    </dt>
+
+                    <dd>
+                        <strong style="font-size:15px;text-decoration:double;text-transform:uppercase">
+                            @Html.DisplayFor(model => model.avaliable)
+                        </strong>
+                    </dd>
+                    <br />
+
+
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.carimg)
+                    </dt>
+
+                    <dd>
+                        <img src="~/upload/@Html.DisplayFor(model=>model.carimg)" class="thumbnail" style="width:150px" ; height:"150px" />
+                    </dd>
+
+                </dl>
+                <p style="text-align:center">
+                    @Html.ActionLink("Back to List", "Index", new { }, new { @class = "btn btn-primary" }) | &nbsp;
+                    @Html.ActionLink("RentNow", "rent", new { id = Model.id }, new { @class = "btn btn-success" })
+
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    </div>

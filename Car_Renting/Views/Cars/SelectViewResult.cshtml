@@ -1,0 +1,51 @@
+﻿@model IEnumerable<Car_Renting.Models.Cars>
+
+@{
+    ViewBag.Title = "SelectView";
+    Layout = "~/Views/shared/_mainlayout.cshtml";
+}
+
+<h2 style="color:brown">Search Result</h2>
+
+<div class="container">
+    <div class="gallery" id="gallery">
+        <!-- gallery -->
+        <div class="container">
+            <div class="wthree_title_agile" id="location">
+                <h3> Our <span>Latest</span>  Cars </h3>
+            </div>
+            <div class="inner_w3l_agile_grids">
+
+                <div class="panel panel-default" style="padding:15px">
+                    <h2 style="color:brown"> Search Results ... </h2>
+                    <div class="row">
+
+                        @foreach (var subitem in Model)
+
+                        {
+                            <div class="col-md-4 gal-gd wow fadeInLeft animated" data-wow-delay=".5s">
+                                <div class="nd-wrap nd-style-8">
+                                    <img src="~/upload/@subitem.carimg" class="img-responsive" alt=" " />
+                                    <div class="nd-content">
+                                        <div class="nd-content_inner">
+                                            <div class="nd-content_inner1">
+                                                <h4 class="nd-title">Car Rental</h4>
+                                                <span class="nd-icon">
+                                                    @Html.ActionLink("Details", "Details", new { id = subitem.id }, new { @class = "btn btn-primary" })
+                                                    <i class="glyphicon glyphicon-search"></i>
+                                                </span>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        }
+                    </div>
+                </div>
+
+                <div>
+                    @Html.ActionLink("Back to List", "Index")
+                </div>

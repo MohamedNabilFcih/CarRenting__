@@ -1,0 +1,82 @@
+﻿
+<!DOCTYPE html>
+
+<html>
+<head>
+   
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width,initial scale=1" />
+  
+    <link href="~/css/owl.carousel.css" rel="stylesheet" />
+    <link href="~/css/Site.css" rel="stylesheet" /> 
+    <link href="~/css/style.css" rel="stylesheet" /> 
+
+    <link href="~/css/font-awesome.css" rel="stylesheet" />
+    <link href="css/font-awesome.css" rel="stylesheet"> 
+    <link href="//fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
+    <link href="//fonts.googleapis.com/css?family=Faster+One" rel="stylesheet">
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
+        <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link href="~/css/jquery.flipster.css" rel="stylesheet" />
+    <link href="~/css/galleryeffect.css" rel="stylesheet" />
+    <link href="~/css/font-awesome.css" rel="stylesheet" />
+    <link href="~/css/dscountdown.css" rel="stylesheet" />
+    <link href="~/css/bootstrap.css" rel="stylesheet" />
+        
+</head>
+<body>
+    
+    
+        <nav class="navbar navbar-default navbar-fixed-tops">
+            <div class="container">
+                 <div id="navbar" class="navbar-collapse collapse" >
+                     <ul class="nav navbar-nav navbar-left">
+                         <li> <a href="~/indx/Index"><i class="glyphicon glyphicon-home"></i> &nbsp; home </a></li>
+                         <li><a href="~/indx/#gallery"><i class="glyphicon glyphicon-tags"></i> &nbsp; RentNow </a></li>
+                         <li><a href="~/indx/#service"><i class="glyphicon glyphicon-fire"></i> Deals  </a></li>
+                         <li><a href="~/indx/Contact"><i class="glyphicon glyphicon-envelope"></i>  Contact Us </a></li>
+                         <li>
+                             @using (Html.BeginForm("Search","indx",FormMethod.Post))
+                             {
+                                <input type="text" name="SearchName" id="SearchName" placeholder="Search Now !"  />
+                             }
+                                
+                         </li>
+                        
+                        
+                      </ul>
+
+                     @Html.Partial("_login")
+                     
+                     
+                </div>
+           </div>
+        </nav>
+
+   
+    
+    <div  style="min-height:550px;"
+        <div >
+            @RenderBody()
+        </div>
+    </div>
+
+    <!--- //-------------------------------------------------------------------------------------------contact -->
+   
+    <div class="w3l_footer_agile">
+        <p>© 2017 Car Rental. All Rights Reserved | Design by <span style="color:darkred;">FCIH TEAM</span></p>
+
+    </div>
+
+
+
+    <script src="~/scripts/jquery.js"></script>
+    <script src="~/scripts/bootstrap.min.js"></script>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+
+</body>
+</html>

@@ -1,0 +1,79 @@
+﻿@model Car_Renting.Models.RentCar
+
+@{
+    ViewBag.Title = "DeleteRequest";
+    Layout = "~/Views/shared/_mainlayout.cshtml";
+}
+<div class="container body-content"> <br /><br />
+    <div class="panel panel-danger">
+        <div class="panel-heading"><strong>Cancel your Request !</strong></div>
+        <div class="panel-body">
+            <h3 class="text-center">Are you sure you want to Cancel this?</h3>
+            <div>
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.car.cardesc)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.car.cardesc)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.user.ssn)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.user.ssn)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.location)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.location)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.PickUp)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.PickUp)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.DropOff)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.DropOff)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.date)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.date)
+                    </dd>
+
+                </dl>
+
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="form-actions no-color text-center">
+
+                        @Html.ActionLink("Back to List", "getUsercars", new { }, new { @class = "btn btn-primary" }) |
+                        <input type="submit" value="Cancel" class="btn btn-danger" />
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+
+
+    </div>

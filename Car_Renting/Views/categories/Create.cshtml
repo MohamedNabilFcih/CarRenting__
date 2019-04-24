@@ -1,0 +1,64 @@
+﻿@model Car_Renting.Models.category
+
+@{
+    ViewBag.Title = "CreateNewType";
+}
+<div class="container body-content">
+    <br /><br />
+    <ul class="nav nav-tabs">
+        <li><a href="~/Account/viewall"><span class="glyphicon glyphicon-align-justify" style="font-size:15px;"></span> Manage All Users </a></li>
+
+        <li class="active"><a href="~/categories/Index"><strong><span class="glyphicon glyphicon-plus" style="font-size:15px;"></span> Add Category</strong> </a></li>
+        <li><a href="~/Cars/Index"><span class="glyphicon glyphicon-plus" style="font-size:15px;"></span> Add Car </a></li>
+
+        <li><a href="~/indx/getAllUserRequest"><span class="glyphicon glyphicon-align-justify" style="font-size:15px;"></span> All Users Requests </a></li>
+        <li><a href="~/indx/avaliableCar"><span class="glyphicon glyphicon-ok" style="font-size:15px;"></span> available cars </a></li>
+        <li><a href="~/indx/Non_avaliableCar"><span class="glyphicon glyphicon-remove" style="font-size:15px;"></span> non available carss </a></li>
+        <li><a href="#"><span class="glyphicon glyphicon-search" style="font-size:15px;"></span> Search</a></li>
+        <li><a href="#"><span class="glyphicon glyphicon-send" style="font-size:15px;"></span> FeedBack</a></li>
+    </ul>
+
+
+    <table class="table table-bordered table-hover">
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+                <br />
+                <div class="alert alert-info text-center"><strong> Create Category </strong></div>
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    @Html.LabelFor(model => model.categoryname, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.categoryname, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.categoryname, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.categorydescription, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.categorydescription, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.categorydescription, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        @Html.ActionLink("Back to List", "Index", new { }, new { @class = "btn btn-primary" })
+
+
+                        <input type="submit" value="Create" class="btn btn-success" />
+                    </div>
+
+
+                </div>
+
+
+            </div>
+        }
+        </table>
+
+</div>

@@ -1,0 +1,52 @@
+﻿@model IEnumerable<Car_Renting.Models.Cars>
+
+@{
+    ViewBag.Title = "Search";
+    Layout = "~/Views/shared/_mainlayout.cshtml";
+}
+
+
+
+      
+
+<div class="container"><br /><br />
+    <div class="panel panel-primary">
+        <div class="panel-heading"><strong>  Search Results ... </strong></div>
+        <div class="panel-body">
+
+
+                            <div class="row">
+
+                                @foreach (var subitem in Model)
+
+                                {
+                                    <div class="col-md-4 gal-gd wow fadeInLeft animated" data-wow-delay=".5s">
+                                        <div class="nd-wrap nd-style-8">
+                                            <img src="~/upload/@subitem.carimg" class="img-responsive" alt=" " />
+                                            <div class="nd-content">
+                                                <div class="nd-content_inner">
+                                                    <div class="nd-content_inner1">
+                                                        <h4 class="nd-title">Car Rental</h4>
+                                                        <span class="nd-icon">
+                                                            @Html.ActionLink("Details", "Details", new { id = subitem.id }, new { @class = "btn btn-primary" })
+                                                            <i class="glyphicon glyphicon-search"></i>
+                                                        </span>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                }
+                            </div>
+                        </div>
+
+
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+
+
+

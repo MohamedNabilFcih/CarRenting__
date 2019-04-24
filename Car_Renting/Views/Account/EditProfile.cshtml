@@ -1,0 +1,85 @@
+﻿@model WebApplication1.Models.EditProfileViewModel
+
+@{
+    ViewBag.Title = "EditProfile";
+    Layout = "~/Views/shared/_mainlayout.cshtml";
+}
+<div class="container"><br /><br />
+    <ul class="nav nav-tabs">
+        <li class="active"><a href="~/Account/EditProfile"><span class="glyphicon glyphicon-user" style="font-size:15px;"></span> <strong>Profile</strong> </a></li>
+        <li><a href="~/indx/getUsercars"><span class="glyphicon glyphicon-share-alt" style="font-size:15px;"></span> REQUESTS</a></li>
+
+        <li><a href="#"><span class="glyphicon glyphicon-search" style="font-size:15px;"></span> Search</a></li>
+        <li><a href="#"><span class="glyphicon glyphicon-send" style="font-size:15px;"></span> FeedBack</a></li>
+    </ul>
+    <h2 style="color:brown"> <span class="glyphicon glyphicon-user" style="font-size:30px;"></span> Edit Your Profile  </h2>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <h3 style="color:#5cb85c"> @ViewBag.Massage  </h3>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.Id)
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.UserName, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.ssn, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.ssn, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.ssn, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.PhoneNumber, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.PhoneNumber, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.PhoneNumber, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.currentPassword, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.currentPassword, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.currentPassword, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.NewPassword, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.NewPassword, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.NewPassword, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Confirm Edit" class="btn btn-success btn-block  " />
+                </div>
+            </div>
+        </div>
+    }
+
+</div>

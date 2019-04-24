@@ -1,0 +1,76 @@
+﻿@using Microsoft.AspNet.Identity
+@using WebApplication1.Models;
+@using Microsoft.AspNet.Identity.EntityFramework;
+@using Microsoft.Owin;
+@using Owin;
+@if (Request.IsAuthenticated)
+{
+    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+    {
+        var db = new ApplicationDbContext();
+        var UserId = User.Identity.GetUserId();
+
+        var CurrentUser = db.Users.Where(a => a.Id == UserId).SingleOrDefault();
+
+        @Html.AntiForgeryToken()
+
+        <ul class="nav navbar-nav navbar-right">
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" >
+                    <span class="glyphicon glyphicon-user"></span>
+                    <strong> Hello  @CurrentUser.UserName </strong>
+                    <span class="glyphicon glyphicon-chevron-down"></span>
+
+                </a>
+                <ul class="dropdown-menu">
+                    <li>
+                        <div class="navbar-user">
+                            <div class="row">
+                                <div class="col-lg-3">
+                                    <p class="text-center">
+                                        <span class="glyphicon glyphicon-user" style="font-size:60px;"></span>
+                                    </p>
+                                </div>
+                                <div class="col-lg-9">
+
+                                    @if (CurrentUser.Usertype == "User")
+                                    {
+                                        <a href="~/indx/getUsercars" class="btn btn-success btn-block">your requests </a>
+                                        <a href="~/Account/EditProfile" class="btn btn-primary btn-block">edit profile</a>
+
+
+                                    }
+                                    else
+                                    {
+                                        <a href="~/Account/viewall" class="btn btn-success btn-block"> ADMIN PANAL </a>
+                                        <a href="~/Account/adminprofile" class="btn btn-primary btn-block">edit profile</a>
+
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+             </li>
+            <li><a href="javascript:document.getElementById('logoutForm').submit()" ><strong> <span class="glyphicon glyphicon-log-out"></span> Log off </strong></a></li>
+
+
+         
+            @*<li>
+                @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+            </li>
+            <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>*@
+           
+        </ul>
+    }
+}
+else
+{
+    <ul class="nav navbar-nav navbar-right">
+        <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" }) </li>
+        <li> @Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" }) </li>
+    </ul>
+}
+
+
+ 

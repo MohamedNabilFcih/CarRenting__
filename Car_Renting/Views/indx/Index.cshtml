@@ -1,0 +1,280 @@
+﻿@model IEnumerable<Car_Renting.Models.category>
+
+
+
+
+@{
+    ViewBag.Title = "Home Page";
+    Layout = "~/Views/shared/_mainlayout.cshtml";
+}
+
+<!-- about -->
+<div class="about" id="about">
+    <div class="container">
+        <div class="wthree_title_agile two">
+            <h3><span>CAR RENTING</span></h3>
+        </div>
+        <p class="sub_para two">It’s time to drive</p>
+        <div class="inner_w3l_agile_grids">
+            <div class="col-md-6 about-left-w3layouts">
+                <h6 class="sub">WELCOME TO OUR Rental Car</h6>
+                <p>Car rental agencies primarily serve people who require a
+                 temporary vehicle, for example, those who do not own their own car, 
+                travelers who are out of town, or owners of damaged 
+                or destroyed vehicles who are awaiting repair or insurance compensation.</p>
+            </div>
+            <div class="col-md-6 about-right-w3layouts">
+                <iframe src="https://player.vimeo.com/video/9677468" frameborder="0"></iframe>
+
+
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</div>
+
+
+<!------------------------------>
+<!-- //header -->
+<div class="services" id="service">
+    <div class="container">
+        <div class="wthree_title_agile">
+            <h3> Today <span>SPECIAL</span>  DEALS </h3>
+        </div>
+        <p class="sub_para">It’s time to drive</p>
+        <div class="inner_w3l_agile_grids">
+            <div class="col-md-4 agileits_service_grid_btm_left">
+                <div class="agileits_service_grid_btm_left1">
+                    <div class="agileits_service_grid_btm_left2">
+                        <h5>Deal 1</h5>
+                        <p>Per day<span>$</span>300.00</p>
+                        <p>Mon, Tue, Thu, Fri, Sat</p>
+
+                    </div>
+                    <img src="~/images/s3.jpg" alt=" " class="img-responsive">
+                </div>
+            </div>
+            <div class="col-md-4 agileits_service_grid_btm_left">
+                <div class="agileits_service_grid_btm_left1">
+                    <div class="agileits_service_grid_btm_left2">
+                        <h5>Deal 2</h5>
+                        <p>Per day<span>$</span>300.00</p>
+                        <p>Mon, Tue, Thu, Fri, Sat</p>
+                    </div>
+                    <img src="~/images/s5.jpg" alt=" " class="img-responsive">
+                </div>
+            </div>
+            <div class="col-md-4 agileits_service_grid_btm_left">
+                <div class="agileits_service_grid_btm_left1">
+                    <div class="agileits_service_grid_btm_left2">
+                        <h5>Deal 3</h5>
+                        <p>Per day<span>$</span>300.00</p>
+                        <p>Mon, Tue, Thu, Fri, Sat</p>
+                    </div>
+                    <img src="~/images/s1.jpg" alt=" " class="img-responsive">
+                </div>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+    </div>
+</div>
+
+<!------------------------------------->
+@*<div class="container">
+    <div class="wthree_title_agile" id="location">
+        <h3> Our <span>Latest</span>  Cars </h3>
+    </div>
+    <div class="panel panel-primary">
+        <div class="panel-heading">Panel with panel-primary class</div>
+        <div class="panel-body">Panel Content</div>
+    </div>
+    </div>*@
+    <div class="gallery" id="gallery">
+        <!-- gallery -->
+        <div class="container">
+            <div class="wthree_title_agile" id="location">
+                <h3> Our <span>Latest</span>  Cars </h3>
+            </div><br />
+
+                @foreach (var item in Model)
+            {
+                    <div class="panel panel-primary" >
+                        <div class="panel-heading"><strong>@Html.DisplayFor(ModelItem => item.categoryname) </strong> <br />
+                            @Html.DisplayFor(ModelItem => item.categorydescription)
+                        
+                         </div>
+                        <div class="panel-body"> <br />
+                            @foreach (var subitem in item.cars)
+                {
+                                <div class="col-md-4 gal-gd wow fadeInLeft animated" data-wow-delay=".5s">
+                                    <div class="nd-wrap nd-style-8">
+                                        <img src="~/upload/@subitem.carimg" class="img-responsive" alt=" " />
+                                        <div class="nd-content">
+                                            <div class="nd-content_inner">
+                                                <div class="nd-content_inner1">
+                                                    <h4 class="nd-title">Car Rental</h4>
+                                                    <span class="nd-icon">
+                                                        <strong>
+                                                        @Html.ActionLink("Details", "Details", new { id = subitem.id })
+                                                        <i class="glyphicon glyphicon-search"></i>
+                                                        </strong>
+                                                        
+                                                    </span>
+                                                    @*<span class="nd-icon">
+                                                            <i class="glyphicon glyphicon-link"></i>
+                                                            @Html.ActionLink("RentNow", "rent", new { id = subitem.id })
+                                                        </span>*@
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            }
+                        </div>
+                    </div>
+                }
+
+                <div class="clearfix"></div>
+        </div>
+    </div>
+    <!-- //gallery -->
+    @*@foreach (var item in Model)
+                    {
+                        foreach (var subitem in item.cars)
+                        {
+                <div class="lb-overlay" id="@subitem.id">
+                    <img src="~/upload/@subitem.carimg" alt="image1" style="height:180px" />
+
+                    <div class="gal-info">
+                        <h3>Car Rental</h3>
+                        <h3 style="color:firebrick"> Type Of Car : @Html.DisplayFor(modelItem => item.categoryname)</h3>
+                        <h3>@Html.DisplayFor(modelItem => item.categorydescription)</h3>
+                        <h3 style="color:firebrick">Price For Day => @subitem.price $</h3>
+                        <p>
+                            any desc...........
+                        </p>
+                    </div>
+                    <a href="#location" class="lb-close">Close</a>
+                </div>
+            }
+        }*@
+
+    <div class="clearfix"></div>
+</div>
+    </div>
+</div>
+<!-- //gallery -->
+<!-- gallery -->
+
+<!-- /contact -->
+@*<div class="map-w3ls">
+    <div class="wthree_title_agile">
+        <h3> Contact <span>Us</span>  </h3>
+    </div>
+    <p class="sub_para">It’s time to drive</p>
+    <div class="contact-agile" id="contact">
+        <div class="contact-middle">
+            <h4>Say Hello</h4>
+            <form action="#" method="post">
+                <div class="form-agileinfo">
+                    <div class="input-w3ls">
+                        <p>Your Name</p>
+                        <input type="text" name="Name" placeholder="" required="" />
+                    </div>
+                    <div class="input-w3ls">
+                        <p>Your Email</p>
+                        <input type="email" name="Email" placeholder="" required="" />
+                    </div>
+
+                </div>
+                <div class="form-agileits-w3layouts">
+                    <p>Your Comments</p>
+                    <textarea name="Massage" placeholder="" required=""></textarea>
+                    <input type="submit" value="Send message">
+                </div>
+                <div class="clearfix"></div>
+            </form>
+        </div>
+        <div class="contact-left">
+            <h6>cairo</h6>
+            <p>+20 11 437 505 19 </p>
+            <p>Cairo    </p>
+            <p><a href="mailto:info@example.com">mohamed.nabil0486@gmail.com</a></p>
+            <h6>Opening Hours</h6>
+            <p>Monday-Friday</p>
+            <span>7.00AM-10.00PM</span>
+            ​<p>Saturday-Sunday</p>
+            ​<span>7.00AM-8.00PM</span>
+        </div>
+
+    </div>
+    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d1730.0088451837776!2d31.314093417426143!3d29.863763655652797!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1458368becfaa68d%3A0xb8a6f7d9576f81f8!2sFaculty+of+Computers+and+Information!5e0!3m2!1sen!2seg!4v1523744164538"></iframe>
+
+</div>*@
+
+@*@Html.Partial("~/Views/indx/Contact.cshtml", new model. )*@
+    
+
+<!-- //contact -->
+<div class="w3_agile_address">
+    <div class="container">
+
+        <div class="w3ls_footer_grid">
+            <div class="col-md-4 w3ls_footer_grid_left">
+                <div class="w3ls_footer_grid_leftl">
+                    <i class="fa fa-map-marker" aria-hidden="true"></i>
+                </div>
+                <div class="w3ls_footer_grid_leftr">
+                    <h4>Find Us On:</h4>
+                    <p>Cairo</p>
+                </div>
+                <div class="clearfix"> </div>
+            </div>
+            <div class="col-md-4 w3ls_footer_grid_left">
+                <div class="w3ls_footer_grid_leftl email">
+                    <i class="fa fa-envelope" aria-hidden="true"></i>
+                </div>
+                <div class="w3ls_footer_grid_leftr ">
+                    <h4>Email Us On:</h4>
+                    <p>mohamed.nabil0486@gmail.com</p>
+                </div>
+                <div class="clearfix"> </div>
+            </div>
+            <div class="col-md-4 w3ls_footer_grid_left">
+                <div class="w3ls_footer_grid_leftl">
+                    <i class="fa fa-phone" aria-hidden="true"></i>
+                </div>
+                <div class="w3ls_footer_grid_leftr">
+                    <h4>Call Us On:</h4>
+                    <p>(+20) 10 2563 4543</p>
+                </div>
+                <div class="clearfix"> </div>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- //footer -->
+
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        /*
+			var defaults = {
+			containerID: 'toTop', // fading element id
+			containerHoverID: 'toTopHover', // fading element hover id
+			scrollSpeed: 1200,
+			easingType: 'linear'
+			};
+		*/
+        $().UItoTop({ easingType: 'easeOutQuart' });
+    });
+</script>
+<a href="#" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
+<!-- //smooth scrolling -->
+<script type="text/javascript" src="js/bootstrap.js"></script>

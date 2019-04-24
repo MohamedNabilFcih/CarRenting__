@@ -1,0 +1,86 @@
+﻿@model IEnumerable<Car_Renting.Models.Cars>
+
+@{
+    ViewBag.Title = "avaliableCar";
+    Layout = "~/Views/shared/_mainlayout.cshtml";
+}
+<div class="container body-content ">
+    <br />
+
+
+    <ul class="nav nav-tabs">
+        <li><a href="~/Account/viewall"><span class="glyphicon glyphicon-align-justify"></span> Manage All Users </a></li>
+
+        <li><a href="~/categories/Index"><span class="glyphicon glyphicon-plus"></span> Add Category </a></li>
+        <li><a href="~/Cars/Index"><span class="glyphicon glyphicon-plus"></span> Add Car </a></li>
+
+        <li><a href="~/indx/getAllUserRequest"><span class="glyphicon glyphicon-align-justify" ></span> All Users Requests </a></li>
+        <li class="active"><a href="~/indx/avaliableCar"><span class="glyphicon glyphicon-ok" style="font-size:15px;"></span> available cars </a></li>
+        <li><a href="~/indx/Non_avaliableCar"><span class="glyphicon glyphicon-remove"></span> non available carss </a></li>
+        <li><a href="#"><span class="glyphicon glyphicon-search"></span> Search</a></li>
+        <li><a href="#"><span class="glyphicon glyphicon-send"></span> FeedBack</a></li>
+    </ul> <br />
+    <table class="table table-bordered table-hover">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.category.categoryname)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.cardesc)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.carimg)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.color)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.numchairs)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.model)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.avaliable)
+            </th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.category.categoryname)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.cardesc)
+                </td>
+                <td>
+                    <img src="~/upload/@Html.DisplayFor(modelItem => item.carimg)" class="thumbnail" style="width:70px" ; height:"70px" />
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.color)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.numchairs)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.model)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.avaliable)
+                </td>
+
+            </tr>
+        }
+
+    </table>
+</div>
+

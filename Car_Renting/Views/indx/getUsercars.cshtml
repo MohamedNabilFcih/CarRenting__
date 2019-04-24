@@ -1,0 +1,75 @@
+﻿@model IEnumerable<Car_Renting.Models.RentCar>
+
+@{
+    ViewBag.Title = "getUsercars";
+    Layout = "~/Views/shared/_mainlayout.cshtml";
+}
+<div class="container body-content"> <br /><br />
+    <ul class="nav nav-tabs">
+        <li ><a href="~/Account/EditProfile"><span class="glyphicon glyphicon-user" style="font-size:15px;"></span> Profile</a></li>
+        <li class="active"><a href="~/indx/getUsercars"><span class="glyphicon glyphicon-share-alt" style="font-size:15px;"></span><strong> Requests</strong> </a> </li>
+        <li><a href="#"><span class="glyphicon glyphicon-search" style="font-size:15px;"></span> Search</a></li>
+        <li><a href="#"><span class="glyphicon glyphicon-send" style="font-size:15px;"></span> FeedBack</a></li>
+
+    </ul><br />
+
+    <table class="table table-bordered table-hover"  >
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.car.cardesc)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.car.price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.user.ssn)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.location)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PickUp)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DropOff)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.date)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.car.cardesc)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.car.price) $
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.user.ssn)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.location)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PickUp)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DropOff)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.date)
+                </td>
+                <td>
+                    @Html.ActionLink("Details", "rentdetails", new { id = item.id }, new { @class = "btn btn-info  btn-block" })
+                    @Html.ActionLink("Edit", "EditRequest", new { id = item.id }, new { @class = "btn btn-warning btn-block" }) 
+                    @Html.ActionLink("Cancel", "DeleteRequest", new { id = item.id }, new { @class = "btn btn-danger  btn-block" })
+                </td>
+            </tr>
+        }
+
+    </table>
+    </div>

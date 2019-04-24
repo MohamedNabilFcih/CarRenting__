@@ -1,0 +1,59 @@
+﻿@model Car_Renting.Models.category
+
+@{
+    ViewBag.Title = "Delete";
+}
+<div class="container body-content">
+    <br /><br />
+    <ul class="nav nav-tabs">
+        <li><a href="~/Account/viewall"><span class="glyphicon glyphicon-align-justify" style="font-size:15px;"></span> Manage All Users </a></li>
+
+        <li class="active"><a href="~/categories/Index"><strong><span class="glyphicon glyphicon-plus" style="font-size:15px;"></span> Add Category</strong> </a></li>
+        <li><a href="~/Cars/Index"><span class="glyphicon glyphicon-plus" style="font-size:15px;"></span> Add Car </a></li>
+
+        <li><a href="~/indx/getAllUserRequest"><span class="glyphicon glyphicon-align-justify" style="font-size:15px;"></span> All Users Requests </a></li>
+        <li><a href="~/indx/avaliableCar"><span class="glyphicon glyphicon-ok" style="font-size:15px;"></span> available cars </a></li>
+        <li><a href="~/indx/Non_avaliableCar"><span class="glyphicon glyphicon-remove" style="font-size:15px;"></span> non available carss </a></li>
+        <li><a href="#"><span class="glyphicon glyphicon-search" style="font-size:15px;"></span> Search</a></li>
+        <li><a href="#"><span class="glyphicon glyphicon-send" style="font-size:15px;"></span> FeedBack</a></li>
+    </ul> <br />
+
+    <div class="alert alert-danger text-center">
+        <strong>
+            Are you sure you want to delete this?
+        </strong>
+    </div>
+            <div>
+
+                <hr />
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.categoryname)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.categoryname)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.categorydescription)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.categorydescription)
+                    </dd>
+
+                </dl>
+
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="form-actions no-color text-center">
+                        @Html.ActionLink("Back to List", "Index", new { }, new { @class = "btn btn-primary" })
+                        <input type="submit" value="Delete" class="btn btn-danger" /> 
+
+                    </div>
+                }
+            </div>
+    </div>

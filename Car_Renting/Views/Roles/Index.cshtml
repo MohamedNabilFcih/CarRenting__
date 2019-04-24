@@ -1,0 +1,42 @@
+﻿@model IEnumerable<Microsoft.AspNet.Identity.EntityFramework.IdentityRole>
+<div class="container body-content">
+    <br /><br />
+    <ul class="nav nav-tabs">
+        <li ><a href="~/Account/viewall"><span class="glyphicon glyphicon-align-justify" style="font-size:15px;"></span> Manage All Users </a></li>
+
+        <li><a href="~/categories/Index"><span class="glyphicon glyphicon-plus"></span> Add Category</a></li>
+        <li><a href="~/Cars/Index"><span class="glyphicon glyphicon-plus"></span> Add Car </a></li>
+
+        <li><a href="~/indx/getAllUserRequest"><span class="glyphicon glyphicon-align-justify"></span> All Users Requests </a></li>
+        <li><a href="~/indx/avaliableCar"><span class="glyphicon glyphicon-ok"></span> available cars </a></li>
+        <li><a href="~/indx/Non_avaliableCar"><span class="glyphicon glyphicon-remove"></span> non available carss </a></li>
+        <li class="active"><a href="~/Roles/Index"><span class="glyphicon glyphicon-lock"></span> roles</a></li>
+        <li><a href="#"><span class="glyphicon glyphicon-search"></span> Search</a></li>
+    </ul> <br />
+    <p><br /><br />
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table table-bordered table-hover">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                </td>
+            </tr>
+        }
+
+    </table>
+    </div>

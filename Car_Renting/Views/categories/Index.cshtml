@@ -1,0 +1,49 @@
+﻿@model IEnumerable<Car_Renting.Models.category>
+
+@{
+    ViewBag.Title = "CarTypes";
+}
+<div class="container body-content">
+    <br /><br />
+    <ul class="nav nav-tabs">
+            <li><a href="~/Account/viewall"><span class="glyphicon glyphicon-align-justify"></span> Manage All Users </a></li>
+            <li class="active"><a href="~/categories/Index"><strong><span class="glyphicon glyphicon-plus" style="font-size:15px;"></span> Add Category</strong> </a></li>
+            <li><a href="~/Cars/Index"><span class="glyphicon glyphicon-plus"></span> Add Car </a></li>
+            <li><a href="~/indx/getAllUserRequest"><span class="glyphicon glyphicon-align-justify"></span> All Users Requests </a></li>
+            <li><a href="~/indx/avaliableCar"><span class="glyphicon glyphicon-ok"></span> available cars </a></li>
+            <li><a href="~/indx/Non_avaliableCar"><span class="glyphicon glyphicon-remove"></span> non available carss </a></li>
+            <li><a href="#"><span class="glyphicon glyphicon-search"></span> Search</a></li>
+            <li><a href="#"><span class="glyphicon glyphicon-send"></span> FeedBack</a></li>
+        </ul>
+    <br />
+
+    <table class="table table-bordered table-hover">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.categoryname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.categorydescription)
+            </th>
+            <th>@Html.ActionLink("Create New type", "Create", new {}, new { @class = "btn btn-success btn-block" })</th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.categoryname)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.categorydescription)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.id }, new { @class = "btn btn-warning btn-block" }) 
+                    @Html.ActionLink("Details", "Details", new { id = item.id }, new { @class = "btn btn-info  btn-block" }) 
+                    @Html.ActionLink("Delete", "Delete", new { id = item.id }, new { @class = "btn btn-danger  btn-block" })
+                </td>
+            </tr>
+        }
+
+    </table>
+    </div>

@@ -1,0 +1,74 @@
+﻿@model Car_Renting.Models.ContactModel
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    if (ViewBag.Result != null)
+    {
+    <div class="container"><br />
+
+            <h3 style="color:#5cb85c;" class="alert alert-success text-center" >@ViewBag.Result</h3>
+   </div>
+    }
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="map-w3ls">
+
+            <div class="wthree_title_agile">
+                <h3> Contact <span>Us</span>  </h3>
+
+            </div>
+            <div class="contact-agile" id="contact">
+                <div class="contact-middle">
+                    <h4>Say Hello</h4>
+                    <form action="#" method="post">
+                        <div class="form-agileinfo">
+                            <div class="input-w3ls">
+                                <p>Your Name</p>
+                                @*<input type="text" name="Name" placeholder="" required="" />*@
+                                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="input-w3ls">
+                                <p>Your Email</p>
+                                @*<input type="email" name="Email" placeholder="" required="" />*@
+                                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                            </div>
+
+                        </div>
+                        <div class="form-agileits-w3layouts">
+                            <p>Your Massage</p>
+                            @*<textarea name="Massage" placeholder="" required=""></textarea>*@
+                            @Html.TextAreaFor(model => model.Massage, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Massage, "", new { @class = "text-danger" })
+                            <input type="submit" value="Send message">
+                        </div>
+                        <div class="clearfix"></div>
+                    </form>
+                </div>
+                <div class="contact-left">
+                    <h6>cairo</h6>
+                    <p><a href="mailto:info@example.com">mohamed.nabil0486@gmail.com</a></p>
+                    
+                    <p>+20 11 437 505 19 </p>
+                  
+                   
+                </div>
+
+            </div>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d1730.0088451837776!2d31.314093417426143!3d29.863763655652797!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1458368becfaa68d%3A0xb8a6f7d9576f81f8!2sFaculty+of+Computers+and+Information!5e0!3m2!1sen!2seg!4v1523744164538"></iframe>
+
+        </div>
+
+
+
+
+
+
+
+
+
+
+        
+}
+
